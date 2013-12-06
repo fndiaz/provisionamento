@@ -1,0 +1,42 @@
+{{extend 'layout.html'}}
+
+
+{{block center}}
+
+<button type="button" class="btn btn-primary" onclick=location.href="{{=URL(a='provisionamento', c='initial', f='add_equipamento')}}">Adicionar</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Fabricante</th>
+            <th>Modelo</th>
+            <th>Linha</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in equip:}}
+        <tr>
+            <td>{{=dado.fabricante}}</td>
+            <td>{{=dado.modelo}}</td>
+            <td>{{=dado.linha}}</td>
+            <td>
+                <a href="{{=URL(a='provisionamento', c='initial', f='edit_equipamento')}}?id_equip={{=dado.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+                <a href="{{=URL(a='provisionamento', c='initial', f='delete_equipamento')}}?id_equip={{=dado.id}}">
+                    <i class=" icon-trash"></i></a>
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+
+<script>
+function remover(){  
+        decisao = confirm("Tem certeza que deseja remover este registro?");
+        if(decisao){
+            location.href="{{=URL(a='provisionamento', c='initial', f='delete_equipamento')}}?id_equip={{=dado.id}}";
+        }  
+    }
+</script> 
+
+{{end}}

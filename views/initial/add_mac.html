@@ -1,0 +1,34 @@
+{{extend 'layout.html'}}
+
+{{block coluna2}}
+{{=form.custom.begin}}
+<div class='well'>
+<label>Equipamento:</label>
+<div>{{=form.custom.widget.id_equipamento}}</div>
+
+<label>Empresa:</label> 
+<div>{{=form.custom.widget.id_empresa}}</div>
+
+<label>Mac:</label> 
+<div>{{=form.custom.widget.mac}}</div>
+
+<label>Ip:</label> 
+<div>{{=form.custom.widget.ip}}</div>
+
+<label>Máscara:</label> 
+<div>{{=form.custom.widget.mascara}}</div>
+
+<label>Gateway:</label> 
+<div>{{=form.custom.widget.gateway}}</div>
+
+<label>vlan:</label> 
+<div>{{=form.custom.widget.vlan}}</div>
+
+<div>{{=form.custom.submit}}</div>
+
+{{=form.custom.end}}
+</div>
+
+
+
+{{end}}

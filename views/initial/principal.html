@@ -1,0 +1,49 @@
+{{extend 'layout.html'}}
+
+
+{{block center}}
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Proxy</th>
+            <th>Dns</th>
+            <th>Ntp</th>
+            <th>Empresa</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in prov_empresa:}}
+        <tr>
+            <td>{{=dado.id_mac}}</td>
+            <td>{{=dado.ramal}}</td>
+            <td>{{=dado.linha}}</td>
+            <td>
+                <button class="btn"><i class="icon-edit"></i></button>
+
+                <button class="btn"><i class="icon-trash"></i></button>
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+
+
+<form action="cron" method="POST">
+Mac: <input type="text" value={{=dado.id_mac}} name="firstname"><br>
+Ramal: <input type="text" value={{=dado.ramal}} name="lastname"><br>
+Linha: <input type="text" value={{=dado.linha}} name="outro"><br>
+
+<select name="val">
+  <option value="{{=dado.id_mac}}">{{=dado.ramal}}</option>
+  <option value="{{=dado.id_mac}}">{{=dado.ramal}}</option>
+  <option value="15">{{=dado.ramal}}</option>
+  <option value="16">{{=dado.ramal}}</option>
+</select>
+	<input type="submit">
+</form>
+
+
+{{end}}

@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+
+
+{{block coluna2}}
+
+<div class='well'>
+<form action="insert_empresa" method="POST">
+<label>Empresa:</label> 
+<input type="text" value="" name="empresa"><br>
+
+<label>Proxy:</label>
+<input type="text" value="" name="proxy"><br>
+
+<label>Dns:</label> 
+<input type="text" value="" name="dns"><br>
+
+<label>Ntp:</label> 
+<input type="text" value="" name="ntp"><br>
+
+<input value="Adicionar" type="submit"  class="btn">
+</form>
+</div>
+
+{{end}}

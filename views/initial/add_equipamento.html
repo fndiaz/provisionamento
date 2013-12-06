@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+
+
+{{block coluna2}}
+
+<div class='well'>
+<form action="insert_equipamento" method="POST">
+<label>Fabricante:</label> 
+<input type="text" value="" name="fabricante"><br>
+
+<label>Modelo:</label>
+<input type="text" value="" name="modelo"><br>
+
+<label>Linha:</label> 
+<input type="text" value="" name="linha"><br>
+
+<input value="Adicionar" type="submit"  class="btn">
+</form>
+</div>
+
+{{end}}

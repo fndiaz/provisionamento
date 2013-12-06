@@ -1,0 +1,102 @@
+{{extend 'layout.html'}}
+
+
+{{block center}}
+
+<div class="span5" style="margin-left: 0px;">
+
+<form action="busca_mac" method="POST">
+<input id="redd" name="nome" class="span3" type="text" autocomplete="off" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="">
+<input class="btn btn-primary" type="submit" name="Pesquisa" value="Pesquisar">
+</form>
+
+</div>
+
+<div class="span1" style="float: right; margin-right: 31px;">
+    <button type="button" class="btn btn-primary" onclick=location.href="{{=URL(a='provisionamento', c='initial', f='add_mac')}}" >Adicionar</button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Equipamento</th>
+            <th>Empresa</th>
+            <th>Mac</th>
+            <th>Ip</th>
+            <th>Gateway</th>
+            <th>Vlan</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in mac:}}
+        <tr>
+            <td>{{=dado.prov_equipamento.modelo}}</td>
+            <td>{{=dado.prov_empresa.empresa}}</td>
+            <td>{{=dado.prov_mac.mac}}</td>
+            <td>{{=dado.prov_mac.ip}}</td>
+            <td>{{=dado.prov_mac.gateway}}</td>
+            <td>{{=dado.prov_mac.vlan}}</td>
+            <td>
+                <a href="{{=URL(a='provisionamento', c='initial', f='edit_mac')}}?id_mac={{=dado.prov_mac.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+                <a href="{{=URL(a='provisionamento', c='initial', f='delete_mac')}}?id_mac={{=dado.prov_mac.id}}">
+                    <i class=" icon-trash"></i></a>
+                <!--<button class="btn" onclick=location.href="{{=URL(a='provisionamento', c='initial', f='edit_mac')}}?id_mac={{=dado.prov_mac.id}}"><i class="icon-edit"></i></button>
+
+                <button class="btn" onclick=location.href="{{=URL(a='provisionamento', c='initial', f='delete_mac')}}?id_mac={{=dado.prov_mac.id}}"><i class="icon-trash"></i></button>-->
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+
+<!-- Paginacao -->
+{{if paginacao == 'on':}}
+<div class="pagination">
+    <ul class="pagination">
+        {{if end != paginate:}}<!--maior que 10 não escreve anterior-->
+        <li><a href={{=URL(vars={'page':int(request.vars.page)-1})}}>Anterior</a></li>
+        {{pass}}
+
+        {{for num in range((regis // paginate)+x):
+            num = num +1}}
+        {{if num == int(request.vars.page):}}
+        <li class="active"><a href={{=URL(vars={'page':num})}}>{{=num}}</a></li>
+        {{else:}}
+        <li><a href={{=URL(vars={'page':num})}}>{{=num}}</a></li>
+        {{pass}}
+        {{pass}}
+
+        {{if not end >= regis:}}<!--nao escreve proximo (ultima pagina)-->
+        <li class="active">
+        <li><a href={{=URL(vars={'page':int(request.vars.page)+1})}}>Próximo</a></li>
+        {{pass}}
+    </ul>
+</div>
+{{pass}}
+
+<script>
+$(document).ready(function(){
+
+$.ajax({
+method: "get",
+url: "initial/json_mac",
+dataType: "json",
+success: function(nome){
+  $('#redd').typeahead({source: nome});
+}
+});
+
+});
+
+
+function remover(){  
+        decisao = confirm("Tem certeza que deseja remover este registro?");
+        if(decisao){
+            location.href="{{=URL(a='provisionamento', c='initial', f='delete_mac')}}?id_mac={{=dado.prov_mac.id}}";
+        }  
+    }
+</script> 
+
+{{end}}

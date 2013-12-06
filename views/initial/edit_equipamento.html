@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+
+
+{{block coluna2}}
+
+<div class='well'>
+<form action="update_equipamento?id_equip={{=id_equip}}" method="POST">
+<label>Fabricante:</label> 
+<input type="text" value="{{=equip.fabricante}}" name="fabricante"><br>
+
+<label>Modelo:</label>
+<input type="text" value="{{=equip.modelo}}" name="modelo"><br>
+
+<label>Linha:</label> 
+<input type="text" value="{{=equip.linha}}" name="linha"><br>
+
+<input value="Editar" type="submit"  class="btn">
+</form>
+</div>
+
+{{end}}

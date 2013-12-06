@@ -1,0 +1,45 @@
+{{extend 'layout.html'}}
+
+
+{{block center}}
+
+<button type="button" class="btn btn-primary" onclick=location.href="{{=URL(a='provisionamento', c='initial', f='add_empresa')}}" >Adicionar</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Proxy</th>
+            <th>Dns</th>
+            <th>Ntp</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in empresa:}}
+        <tr>
+            <td>{{=dado.empresa}}</td>
+            <td>{{=dado.proxy}}</td>
+            <td>{{=dado.dns}}</td>
+            <td>{{=dado.ntp}}</td>
+            <td>
+                <a href="{{=URL(a='provisionamento', c='initial', f='edit_empresa')}}?id_emp={{=dado.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a href="{{=URL(a='provisionamento', c='initial', f='delete_empresa')}}?id_emp={{=dado.id}}">
+                    <i class=" icon-trash"></i></a>
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+
+<script>
+function remover(){  
+        decisao = confirm("Tem certeza que deseja remover este registro?");
+        if(decisao){
+            location.href="{{=URL(a='provisionamento', c='initial', f='delete_empresa')}}?id_emp={{=dado.id}}";
+        }  
+    }
+</script> 
+
+{{end}}

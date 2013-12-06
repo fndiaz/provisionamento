@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+
+
+{{block coluna2}}
+
+<div class='well'>
+<form action="update_empresa?id_emp={{=id_emp}}" method="POST">
+<label>Empresa:</label> 
+<input type="text" value="{{=empresa.empresa}}" name="empresa"><br>
+
+<label>Proxy:</label>
+<input type="text" value="{{=empresa.proxy}}" name="proxy"><br>
+
+<label>Dns:</label> 
+<input type="text" value="{{=empresa.dns}}" name="dns"><br>
+
+<label>Ntp:</label> 
+<input type="text" value="{{=empresa.ntp}}" name="ntp"><br>
+
+<input value="Editar" type="submit"  class="btn">
+</form>
+</div>
+
+{{end}}

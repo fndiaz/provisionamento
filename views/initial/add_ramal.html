@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+
+{{block coluna2}}
+{{=form.custom.begin}}
+
+<div class='well'>
+<label>Mac:</label>
+<div>{{=form.custom.widget.id_mac}}</div>
+
+<label>Ramal:</label> 
+<div>{{=form.custom.widget.ramal}}</div>
+
+<label>linha:</label> 
+<div>{{=form.custom.widget.linha}}</div>
+
+<div>{{=form.custom.submit}}</div>
+
+{{=form.custom.end}}
+</div>
+
+
+{{end}}
