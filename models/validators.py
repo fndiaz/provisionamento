@@ -21,6 +21,9 @@ db.prov_mac.mac.requires=[
 		error_message=T("valor não pode ser nulo")),
 	IS_NOT_IN_DB(db, 'prov_mac.mac', 
     	error_message=e_m['not_in_db']),
+	IS_LENGTH(minsize=12, maxsize=12, 
+		error_message=T("12 números")),
+	IS_LOWER(),
 ]
 
 ##RAMAL
