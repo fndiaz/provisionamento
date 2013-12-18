@@ -250,10 +250,10 @@ def delete_ramal():
 	com = commands.getoutput(
 	"rm -f /var/www/provisionamento/%s.cfg" %(mac))
 	print com
-	com2 = 	commands.getoutput(
-	"php /aldeia/script/asterisk/provisionamento.php")
 
-	db(db.prov_ramal.id == id_ramal).delete() 
+	db(db.prov_ramal.id == id_ramal).delete()
+	com2 = 	commands.getoutput(
+	"php /aldeia/script/asterisk/provisionamento.php") 
 
 	redirect(URL('ramal'))
 
